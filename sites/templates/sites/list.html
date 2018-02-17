@@ -1,0 +1,14 @@
+{% extends 'sites/base.html' %}
+
+{% block container %}
+  <h1>Sites</h1>
+  {% if sites %}
+    <ul class="list-group">
+      {% for site in sites %}
+        <li class="list-group-item"><a href="{{ site.get_absolute_url }}">{{ site.name }}</a></li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p>No sites available</p>
+  {% endif %}
+{% endblock %}

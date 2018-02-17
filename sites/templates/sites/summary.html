@@ -1,0 +1,35 @@
+{% extends 'sites/base.html' %}
+{% load tags %}
+{% block container %}
+  <h1>Summary</h1>
+  {% if not aggregated_data %}
+    <p>No sites data available</p>
+  {% else %}
+    <a href="{% url 'summary' %}">
+      <button type="button" class="btn btn-primary {% active_url 'summary' %}">Sum</button>
+    </a>
+    <a href="{% url 'summary-average' %}">
+      <button type="button" class="btn btn-primary {% active_url 'summary-average' %}">Average</button>
+    </a>
+
+    <table class="table">
+      <thead>
+      <tr>
+        <td><strong>Site</strong></td>
+        <td><strong>A Value</strong></td>
+        <td><strong>B Value</strong></td>
+      </tr>
+      </thead>
+
+      <tbody>
+      {% for item in aggregated_data %}
+        <tr>
+          <td>{{ item.site_name }}</td>
+          <td>{{ item.agg_value_a }}</td>
+          <td>{{ item.agg_value_b }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}

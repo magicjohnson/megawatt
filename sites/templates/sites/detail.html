@@ -1,0 +1,27 @@
+{% extends 'sites/base.html' %}
+{% block container %}
+  <h1>Site Details - {{ site.name }}</h1>
+  {% if not site.records.all %}
+    <p>No site data available</p>
+  {% else %}
+    <table class="table">
+      <thead>
+      <tr>
+        <td><strong>Date</strong></td>
+        <td><strong>A Value</strong></td>
+        <td><strong>B Value</strong></td>
+      </tr>
+      </thead>
+
+      <tbody>
+      {% for record in site.records.all %}
+        <tr>
+          <td>{{ record.date }}</td>
+          <td>{{ record.value_a }}</td>
+          <td>{{ record.value_b }}</td>
+        </tr>
+      {% endfor %}
+      </tbody>
+    </table>
+  {% endif %}
+{% endblock %}

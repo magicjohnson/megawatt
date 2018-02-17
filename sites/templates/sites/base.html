@@ -1,0 +1,32 @@
+{% load tags %}
+<!DOCTYPE html>
+<html>
+<head>
+  <title>3MW - Application Task</title>
+  <meta name="viewport" content="width=520, user-scalable=no">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+
+  <!-- Bootstrap css -->
+  <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css">
+
+  <style></style>
+</head>
+<body>
+
+<!-- Static navbar -->
+<nav class="navbar navbar-default">
+  <div id="navbar" class="navbar-collapse collapse">
+    <ul class="nav navbar-nav">
+      <li class="{% active_url 'site-list,index,site' %}" role="presentation">
+        <a href="{% url 'site-list' %}">Sites</a>
+      </li>
+      <li class="{% active_url 'summary,summary-average' %}" role="presentation">
+        <a href="{% url 'summary' %}">Summary</a>
+      </li>
+    </ul>
+  </div><!--/.nav-collapse -->
+</nav>
+
+<div class="container">
+  {% block container %}{% endblock %}
+</div>
